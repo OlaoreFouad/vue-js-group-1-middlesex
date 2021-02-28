@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
+    <script src="https://unpkg.com/vue"></script>
     <title>CourseWork 1</title>
 </head>
 <body>
@@ -13,16 +14,30 @@
         <div class="lesson">
             <img src="./images/biology.webp" alt="">
             <div class="lesson-details">
-                <h4 class="lesson-name" >Biology</h4>
-                <p>Birmingham</p>
-                <p>Price: 500</p>
-                <p>Number of Spaces: 6</p>
+                <h4 class="lesson-name">Subject: {{book.subject}}</h4>
+                <p>Location: {{book.location}}</p>
+                <p>Price: {{book.price}}</p>
+                <p>Number of Spaces: {{book.spaces}}</p>
             </div>
         </div>
 
         <button>Add To Cart</button>
 
     </div>
+
+    <script>
+        var school = new Vue({
+            el: '#app',
+            data:{
+                book:{
+                    subject: 'Biology',
+                    location: 'Birmingham',
+                    price: 500,
+                    spaces: 6,
+                }
+            },
+        })
+    </script>
     
 </body>
 </html>
