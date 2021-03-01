@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
-    <script src="https://unpkg.com/vue"></script>
     <title>CourseWork 1</title>
 </head>
 <body>
@@ -14,33 +13,38 @@
         <div class="lesson">
             <img src="./images/biology.webp" alt="">
             <div class="lesson-details">
-                <h4 class="lesson-name">Subject: {{book.subject}}</h4>
-                <p>Location: {{book.location}}</p>
-                <p>Price: {{book.price}}</p>
-                <p>Number of Spaces: {{book.spaces}}</p>
+                <h4 class="lesson-name">Subject: {{ lesson.name }}</h4>
+                <p>Location: {{ lesson.location }}</p>
+                <p>Price: {{ lesson.price }}</p>
+                <p>Number of Spaces: {{ lesson.spaces }}</p>
             </div>
         </div>
 
-        <button v-on:click='addtocart'>Add To Cart</button>
-        
-
+        <button v-on:click='addToCart' v-if="canAddToCart">Add To Cart</button>
+        <button v-else disabled>Add To Cart</button>
 
     </div>
 
+    <script src="https://unpkg.com/vue"></script>
     <script>
         var school = new Vue({
             el: '#app',
-            data:{
-                book:{
-                    subject: 'Biology',
+            data: {
+                lesson: {
+                    name: 'Biology',
                     location: 'Birmingham',
                     price: 500,
                     spaces: 6,
                 }
             },
-            methods:{
-                addtocart: function() {
-                    this.book.spaces--;
+            methods: {
+                addToCart: function() {
+                    this.lesson.spaces--;
+                }
+            },
+            computed: {
+                canAddToCart: function() {
+                    return this.lesson.spaces > 0;
                 }
             }
         })
