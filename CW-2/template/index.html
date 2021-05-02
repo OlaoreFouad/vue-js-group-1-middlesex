@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coursework 2</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+<body>
+
+    <div id="app">
+
+        <div class="lessons">
+
+            <ul class="lesson" v-for="element in array">
+                <li>Topic: Math</li>
+                <li>Location: Hendon</li>
+                <li>Price: 80</li>
+            </ul>
+
+        </div>
+
+    </div>
+    
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+
+        var lessons = new Vue({
+            el: '#app',
+            data: {
+                array: [1, 2, 3, 4]
+            }
+        })
+
+    </script>
+</body>
+</html>
