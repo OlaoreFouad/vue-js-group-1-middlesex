@@ -1,12 +1,21 @@
 /* Create your Express Server Here */
-const express = require("express");
-const http = require("http");
+var express = require('express');
+var http = require('http');
+var app = express();
 
-const app = express();
+var user= [
+    {'email': 'user@email.com', 'password': 'mypassword'}
+];
 
-app.use(function(request, response){
+app.use(function(request, response, next){
     console.log("In comes a request to: " + request.url);
-    response.end("Server working!");
-})
+    next();
+});
+
+app.get('/user', function(req, res){
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end(JSON.stringify(user));
+});
 
 http.createServer(app).listen(3000);
