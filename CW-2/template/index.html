@@ -1,37 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Coursework 2</title>
-    <link rel="stylesheet" href="./main.css">
-</head>
-<body>
-
+    <link rel="stylesheet" href="./main.css" />
+  </head>
+  <body>
     <div id="app">
-
-        <div class="lessons">
-
-            <ul class="lesson" v-for="element in array">
-                <li>Topic: Math</li>
-                <li>Location: Hendon</li>
-                <li>Price: 80</li>
-            </ul>
-
-        </div>
-
+      <div class="lessons">
+        <ul class="lesson" v-for="lesson in lessons">
+          <li>Topic: {{ lesson.topic }}</li>
+          <li>Location: {{ lesson.location }}</li>
+          <li>Price: {{ lesson.price }}</li>
+        </ul>
+      </div>
     </div>
-    
+
     <script src="https://unpkg.com/vue"></script>
     <script>
-
-        var lessons = new Vue({
-            el: '#app',
-            data: {
-                array: [1, 2, 3, 4]
-            }
-        })
-
+      var lessons = new Vue({
+        el: "#app",
+        data: {
+          lessons: [],
+        },
+        created: function () {
+          fetch("http://localhost:3000/lessons")
+            .then((response) => {
+              return response.json();
+            })
+            .then((_lessons) => {
+              lessons.lessons = _lessons;
+            });
+        },
+      });
     </script>
-</body>
+  </body>
 </html>
