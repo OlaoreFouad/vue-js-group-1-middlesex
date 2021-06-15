@@ -1,0 +1,11 @@
+Make the front end of your ‘after school lesson’ app a Progressive Web App (PWA)
+(a) Add a web manifest file, with at least the follow property (1%)
+ name
+ short name
+ icons
+ start url
+ background color
+(b) Add an icon image (1%)
+(c) Add a service worker that
+ caches all the files needed to run the app offline (1%)
+ uses the files from the cache when the device is offline (1%)
