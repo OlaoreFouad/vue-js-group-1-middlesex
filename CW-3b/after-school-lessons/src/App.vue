@@ -1,31 +1,46 @@
 <template>
   <div id="app">
-    <header v-if="this.cart.length > 0">
-      <button class="action-button">({{ this.cart.length }}) Checkout</button>
+    <div v-if="page === 'lesson'">
+       <header v-if="this.cart.length > 0">
+         <button class="action-button" v-on:click="showCheckOut('cart')">({{ this.cart.length }}) Checkout</button>
     </header>
 
     <LessonList @addToCart="add" />
+    </div>
+    <div v-if="page === 'cart'">
+       <CheckOut :cart="cart" @remove="removeLessonIndex" />
+    </div>
+   
   </div>
 </template>
 
 <script>
 import LessonList from "./components/LessonList.vue";
+import CheckOut from "./components/Checkout.vue"
 
 export default {
   name: "App",
   components: {
     LessonList,
+    CheckOut
   },
   data() {
     return {
       cart: [],
+      page: "lesson",
     };
   },
   methods: {
+    showCheckOut(page){
+      this.page = page;
+    },
     add(lesson) {
       console.log("getting here!");
       this.cart.push(lesson);
     },
+    removeLessonIndex(index){
+      this.cart.splice(index,1);
+    }
   },
 };
 </script>
