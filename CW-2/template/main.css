@@ -1,20 +1,21 @@
 body {
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
 .lessons {
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 40px;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 40px;
 }
 
 ul.lesson {
-    margin: 0;
-    padding: 20px;
-    width: 200px;
-    border: 2px solid lightblue;
+  margin: 0;
+  padding: 20px;
+  width: 200px;
+  border: 2px solid lightblue;
 }
 
 ul.lesson li {
-    margin-left: 20px;
+  margin-left: 20px;
 }
