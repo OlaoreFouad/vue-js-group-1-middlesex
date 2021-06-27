@@ -8,10 +8,7 @@
         <li>Price: ${{ lesson.price }}</li>
         <li>Spaces: {{ lesson.spaces }}</li>
         <div class="text-center">
-          <div v-for='(lesson,index) in cart' :key="index">
-        {{lesson.id}}
         <button @click="removeLesson(index)">remove</button>
-    </div>
         </div>
       </ul>
     </div>

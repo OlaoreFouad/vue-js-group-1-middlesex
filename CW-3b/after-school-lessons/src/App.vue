@@ -1,16 +1,14 @@
 <template>
   <div id="app">
-    <div v-if="page === 'lesson'">
        <header v-if="this.cart.length > 0">
-         <button class="action-button" v-on:click="showCheckOut('cart')">({{ this.cart.length }}) Checkout</button>
+         <button class="action-button" v-on:click="showCheckOut">({{ this.cart.length }}) Checkout</button>
     </header>
-
+    <div v-if="showProduct">
     <LessonList @addToCart="add" />
     </div>
-    <div v-if="page === 'cart'">
+    <div v-else>
        <CheckOut :cart="cart" @remove="removeLessonIndex" />
-    </div>
-   
+       </div>
   </div>
 </template>
 
@@ -27,12 +25,12 @@ export default {
   data() {
     return {
       cart: [],
-      page: "lesson",
+      showProduct: true,
     };
   },
   methods: {
-    showCheckOut(page){
-      this.page = page;
+    showCheckOut(){
+      this.showProduct = this.showProduct ? false : true;
     },
     add(lesson) {
       console.log("getting here!");
