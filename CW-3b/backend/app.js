@@ -6,11 +6,11 @@ var app = express();
 var user = { email: "user@email.com", password: "mypassword" };
 
 var lessonList = [
-  { topic: "Math", location: "London", price: 100, spaces: 5 },
-  { topic: "Physics", location: "Liverpool", price: 80, spaces: 5 },
-  { topic: "Biology", location: "Oxford", price: 90, spaces: 5 },
-  { topic: "Programming", location: "Bristol", price: 120, spaces: 5 },
-  { topic: "Music", location: "Birmingham", price: 123, spaces: 5 },
+  {topic: "Math", location: "London", price: 100, spaces: 5 },
+  {topic: "Physics", location: "Liverpool", price: 80, spaces: 5 },
+  {topic: "Biology", location: "Oxford", price: 90, spaces: 5 },
+  {topic: "Programming", location: "Bristol", price: 120, spaces: 5 },
+  {topic: "Music", location: "Birmingham", price: 123, spaces: 5 },
 ];
 
 app.use(function (request, response, next) {
