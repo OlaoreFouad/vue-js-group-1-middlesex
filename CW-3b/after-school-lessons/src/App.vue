@@ -1,44 +1,75 @@
 <template>
   <div id="app">
-       <header v-if="this.cart.length > 0">
-         <button class="action-button" v-on:click="showCheckOut">({{ this.cart.length }}) Checkout</button>
+    <header v-if="this.cart.length > 0">
+      <button class="action-button" v-on:click="showCheckOut">
+        ({{ itemsInCart }}) Checkout
+      </button>
     </header>
     <div v-if="showProduct">
-    <LessonList @addToCart="add" />
+      <LessonList :lessons="lessons" @addToCart="add" />
     </div>
     <div v-else>
-       <CheckOut :cart="cart" @remove="removeLessonIndex" />
-       </div>
+      <CheckOut :cart="cart" @remove="removeLessonIndex" />
+    </div>
   </div>
 </template>
 
 <script>
 import LessonList from "./components/LessonList.vue";
-import CheckOut from "./components/Checkout.vue"
+import CheckOut from "./components/Checkout.vue";
 
 export default {
   name: "App",
   components: {
     LessonList,
-    CheckOut
+    CheckOut,
   },
   data() {
     return {
       cart: [],
       showProduct: true,
+      lessons: [],
     };
   },
   methods: {
-    showCheckOut(){
+    showCheckOut() {
       this.showProduct = this.showProduct ? false : true;
     },
     add(lesson) {
-      console.log("getting here!");
-      this.cart.push(lesson);
+      const existingLessonIndex = this.cart.findIndex(
+        (_lesson) => lesson.id == _lesson.id
+      );
+      if (existingLessonIndex != -1) {
+        this.cart[existingLessonIndex].spaces =
+          this.cart[existingLessonIndex].spaces + 1;
+      } else {
+        let newLesson = {};
+        Object.assign(newLesson, lesson);
+        newLesson.spaces = 1;
+        this.cart.push(newLesson);
+      }
     },
-    removeLessonIndex(index){
-      this.cart.splice(index,1);
-    }
+    removeLessonIndex(index) {
+      this.cart.splice(index, 1);
+    },
+  },
+  computed: {
+    itemsInCart: function() {
+      let count = 0;
+      this.cart.forEach((item) => {
+        count += item.spaces;
+      });
+      return count;
+    },
+  },
+  created: function() {
+    fetch("http://localhost:3000/lessons")
+      .then((response) => {
+        return response.json();
+      })
+      .then((_lessons) => {
+        this.lessons = _lessons;
+      });
   },
 };
 </script>

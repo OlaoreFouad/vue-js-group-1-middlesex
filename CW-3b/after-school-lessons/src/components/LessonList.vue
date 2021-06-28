@@ -19,10 +19,9 @@
 <script>
 export default {
   name: "LessonList",
+  props: ["lessons"],
   data() {
-    return {
-      lessons: [],
-    };
+    return {};
   },
   methods: {
     addToCart(lesson) {
@@ -30,15 +29,6 @@ export default {
       console.log("emitting value!");
       this.$emit("addToCart", lesson);
     },
-  },
-  created: function() {
-    fetch("http://localhost:3000/lessons")
-      .then((response) => {
-        return response.json();
-      })
-      .then((_lessons) => {
-        this.lessons = _lessons;
-      });
   },
 };
 </script>
