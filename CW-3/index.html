@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="petstore.webmanifest" />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>CourseWork 1</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="lessons">
+        <div class="lesson" v-for="lesson in lessons">
+          <div class="lesson-main">
+            <img v-bind:src="lesson.image" alt="" />
+            <div class="lesson-details">
+              <h4 class="lesson-name">Subject: {{ lesson.name }}</h4>
+              <p>Location: {{ lesson.location }}</p>
+              <p>Price: {{ lesson.price }}</p>
+              <p>Number of Spaces: {{ lesson.spaces }}</p>
+            </div>
+          </div>
+          <div class="lesson-action">
+            <button v-on:click="addToCart(lesson)" v-if="lesson.spaces > 0">
+              Add To Cart
+            </button>
+            <button v-else disabled>Add To Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("service-worker.js");
+      }
+    </script>
+    <script src="./lessons.js"></script>
+    <script>
+      var school = new Vue({
+        el: "#app",
+        data: {
+          lessons: LESSONS,
+        },
+        methods: {
+          addToCart: function (lesson) {
+            lesson.spaces--;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

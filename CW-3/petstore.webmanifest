@@ -1,0 +1,15 @@
+{
+  "name": "Group 1 Petstore",
+  "short_name": "group1_petstore",
+  "description": "group 1 online pet store",
+  "icons": [
+    {
+      "src": "images/512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "index.html",
+  "display": "fullscreen",
+  "background_color": "#B12A34"
+}

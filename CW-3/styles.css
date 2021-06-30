@@ -1,0 +1,52 @@
+* {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  margin: 0;
+}
+
+body {
+  padding: 10px;
+}
+
+.lessons {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.lesson {
+  margin: 30px;
+  border: 1px solid lightblue;
+  padding: 20px;
+}
+
+.lesson-action {
+  text-align: center;
+}
+
+.lesson-main {
+  display: flex;
+}
+
+.lesson img {
+  height: 200px;
+  width: 200px;
+}
+
+.lesson-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin-left: 20px;
+}
+
+.lesson-details h4 {
+  font-size: 1.8rem;
+}
+
+.lesson-details p {
+  font-size: 1.1rem;
+}
+
+button {
+  margin: 20px 0;
+}
