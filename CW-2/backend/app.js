@@ -6,10 +6,17 @@ var app = express();
 var user = { email: "user@email.com", password: "mypassword" };
 
 var lessonList = [
-  { topic: "math", location: "London", price: 100 },
-  { topic: "math", location: "Liverpool", price: 80 },
-  { topic: "math", location: "Oxford", price: 90 },
-  { topic: "math", location: "Bristol", price: 120 },
+  { id: 1000, topic: "Math", location: "London", price: 100, spaces: 5 },
+  { id: 1001, topic: "Physics", location: "Liverpool", price: 80, spaces: 5 },
+  { id: 1002, topic: "Biology", location: "Oxford", price: 90, spaces: 5 },
+  {
+    id: 1003,
+    topic: "Programming",
+    location: "Bristol",
+    price: 120,
+    spaces: 5,
+  },
+  { id: 1004, topic: "Music", location: "Birmingham", price: 123, spaces: 5 },
 ];
 
 app.use(function (request, response, next) {
