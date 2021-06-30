@@ -1,7 +1,7 @@
 {
-  "name": "Group 1 Petstore",
-  "short_name": "group1_petstore",
-  "description": "group 1 online pet store",
+  "name": "Group 1 Lessons",
+  "short_name": "group1_lessons",
+  "description": "group 1 online lessons app",
   "icons": [
     {
       "src": "images/512.png",
